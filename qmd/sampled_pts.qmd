@@ -1,0 +1,114 @@
+---
+title: "Points échantillonnés"
+page-layout: full
+---
+
+
+```{r}
+#| echo: false
+#| column: screen
+#| fig.height: 10
+
+library(mapview)
+
+# Bathymetry
+bathy0 <- sf::st_read("../data/bathymetrie.geojson")
+bathy10 <- sf::st_read("../data/bathymetrie10.geojson")
+bathy10[1,"depth"] <- "-10m"
+
+# Sites
+sites <- sf::st_read("../data/zones.geojson")
+
+# Sampling points
+sampling_pts <- read.csv("../data/sample_pts_2023.csv")
+sampling_pts$name <- tolower(sampling_pts$noms)
+sampling_pts_supp <- read.csv("../data/sample_pts_supp_2023.csv") 
+sampling_pts_supp$name <- tolower(sampling_pts_supp$noms)
+sampling_pts_all <- rbind(sampling_pts, sampling_pts_supp)
+
+## Function to import data
+#source("../R/import_redcap.R")
+#
+## Import data to identify sampling pts that are done
+#pts_done <- import_redcap()[,c("eventid", "station_id", "replicat_number")]
+#pts_done$eventid <-   gsub(pattern = "pao-2023-", replacement = "", x = pts_done$eventid)
+#pts_done$station_id <-   gsub(pattern = "pao-", replacement = "", x = pts_done$station_id)
+
+sampling_pts_all[,"done"] <- 0
+# Add column to show if it's done or not
+#sampling_pts_all[sampling_pts_all$name %in% pts_done$eventid, "done"] <- 1
+#sampling_pts_all[!sampling_pts_all$name %in% pts_done$eventid, "done"] <- 0
+#sampling_pts_done <- sampling_pts_all[sampling_pts_all$name %in% pts_done$eventid,]
+
+# Import stations
+stations <- terra::vect("../data/soussites.geojson")
+stations$noms_sous_sites <- tolower(stations$noms_sous_sites)
+
+stations_not_started <- stations$noms_sous_sites
+# Specify which stationis finished, unfinished or not started
+#replicat_by_station <- table(pts_done$station_id)
+#stations_finished <- names(replicat_by_station)[replicat_by_station == 5]
+#stations_unfinished <- names(replicat_by_station)[replicat_by_station < 5]
+#stations_not_started <- stations$name[!stations$name %in% c(stations_finished,stations_unfinished)]
+
+# Pts to do in unfinished stations
+#sampling_pts_todo <- sampling_pts[grep(stations_unfinished, sampling_pts$name),]
+#sampling_pts_todo <- sampling_pts_todo[!sampling_pts_todo$name %in% sampling_pts_done$name,]
+sampling_pts_todo <- sampling_pts
+
+# Color palette for stations
+cols_stations <- c(finished = "#5ab4ac",
+                   unfinished = "#d8b365",
+                   not_started = "#bdbdbd")
+
+cols_pts <- c(finished = "black",
+              not_started = "white")
+
+
+# sampling_pts_done
+# sampling_pts_todo
+# stations_finished
+# stations_unfinished
+# stations_not_started
+
+# Mapview
+## Convert stations and sampling_pts to sf objects
+stations <- sf::st_as_sf(stations)
+#sampling_pts_done <- sf::st_as_sf(sampling_pts_done, coords = c("longitude", "latitude"))[,"name"]
+sampling_pts_todo <- sf::st_as_sf(sampling_pts_todo, coords = c("longitude", "latitude"))[,"name"]
+
+map <-# mapview(stations[stations$name %in% stations_finished,],
+      #         col.regions = cols_stations["finished"],
+      #         alpha.regions = 1,
+      #         legend = FALSE,
+      #         layer.name = "Stations terminées") +
+      # mapview(stations[stations$name %in% stations_unfinished,],
+      #         col.regions = cols_stations["unfinished"],
+      #         alpha.regions = 1,
+      #         legend = FALSE,
+      #         layer.name = "Stations en cours") +
+       mapview(sites,
+               alpha.regions = 0.7) + 
+       mapview(stations[stations$noms_sous_sites %in% stations_not_started, "noms_sous_sites"],
+               col.regions = cols_stations["not_started"],
+               alpha.regions = 0.1,
+               legend = FALSE,
+               layer.name = "Stations non commencées") +
+      # mapview(sampling_pts_done, 
+      #         col.regions = cols_pts["finished"],
+      #         cex = 3,
+      #         legend = FALSE,
+      #         layer.name = "Points terminés") +
+       mapview(list(bathy0, bathy10),
+               color = list("red", "black"),
+               layer.name = c("0m","-10m")) +
+       mapview(sampling_pts_todo, 
+               col.regions = cols_pts["not_started"],
+               cex = 3,
+               legend = FALSE,
+               layer.name = "Points à faire")
+
+map
+
+```
+
