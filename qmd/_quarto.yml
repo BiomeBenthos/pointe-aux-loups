@@ -2,7 +2,7 @@ project:
   type: website
 
 website:
-  title: "Pointes-aux-Outardes"
+  title: "Pointe-aux-Loups"
   navbar:
     left:
       - href: index.qmd

@@ -8,16 +8,22 @@ page-layout: full
 #| echo: false
 #| column: screen
 #| fig.height: 10
+#| warning: FALSE
+#| message: FALSE
 
 library(mapview)
 
+# Site recharge
+construction <- sf::st_read("../data/lignes_construction/6301-23-0104_20230504_ZoneTransfertAdministrationF0110.shp") |> suppressMessages()
+construction[,"nom"] <- "Recharge"
+
 # Bathymetry
-bathy0 <- sf::st_read("../data/bathymetrie.geojson")
-bathy10 <- sf::st_read("../data/bathymetrie10.geojson")
+bathy0 <- sf::st_read("../data/bathymetrie.geojson") |> suppressMessages()
+bathy10 <- sf::st_read("../data/bathymetrie10.geojson") |> suppressMessages()
 bathy10[1,"depth"] <- "-10m"
 
 # Sites
-sites <- sf::st_read("../data/zones.geojson")
+sites <- sf::st_read("../data/zones.geojson") |> suppressMessages()
 
 # Sampling points
 sampling_pts <- read.csv("../data/sample_pts_2023.csv")
@@ -41,7 +47,7 @@ sampling_pts_all[,"done"] <- 0
 #sampling_pts_done <- sampling_pts_all[sampling_pts_all$name %in% pts_done$eventid,]
 
 # Import stations
-stations <- terra::vect("../data/soussites.geojson")
+stations <- terra::vect("../data/soussites.geojson") |> suppressMessages()
 stations$noms_sous_sites <- tolower(stations$noms_sous_sites)
 
 stations_not_started <- stations$noms_sous_sites
@@ -88,7 +94,7 @@ map <-# mapview(stations[stations$name %in% stations_finished,],
       #         legend = FALSE,
       #         layer.name = "Stations en cours") +
        mapview(sites,
-               alpha.regions = 0.7) + 
+               alpha.regions = 0.7) +
        mapview(stations[stations$noms_sous_sites %in% stations_not_started, "noms_sous_sites"],
                col.regions = cols_stations["not_started"],
                alpha.regions = 0.1,
@@ -106,9 +112,11 @@ map <-# mapview(stations[stations$name %in% stations_finished,],
                col.regions = cols_pts["not_started"],
                cex = 3,
                legend = FALSE,
-               layer.name = "Points à faire")
+               layer.name = "Points à faire") +
+       mapview(construction[,"nom"],
+               col.regions = "darkgrey",
+               alpha.regions = 1)
 
 map
 
 ```
-

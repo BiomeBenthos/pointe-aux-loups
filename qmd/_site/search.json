@@ -1,5 +1,12 @@
 [
   {
+    "objectID": "sampled_pts.html",
+    "href": "sampled_pts.html",
+    "title": "Points échantillonnés",
+    "section": "",
+    "text": "Reading layer `6301-23-0104_20230504_ZoneTransfertAdministrationF0110' from data source `/home/vincent/github/pointe-aux-loups/data/lignes_construction/6301-23-0104_20230504_ZoneTransfertAdministrationF0110.shp' \n  using driver `ESRI Shapefile'\nSimple feature collection with 1 feature and 3 fields\nGeometry type: MULTIPOLYGON\nDimension:     XY\nBounding box:  xmin: 291769.4 ymin: 5267768 xmax: 292852.6 ymax: 5268768\nProjected CRS: NAD83(CSRS98) / MTM zone 4\n\n\nReading layer `bathymetrie' from data source \n  `/home/vincent/github/pointe-aux-loups/data/bathymetrie.geojson' \n  using driver `GeoJSON'\nSimple feature collection with 2 features and 2 fields\nGeometry type: LINESTRING\nDimension:     XY\nBounding box:  xmin: -61.69938 ymin: 47.53545 xmax: -61.64128 ymax: 47.5702\nGeodetic CRS:  WGS 84\n\n\nReading layer `bathymetrie10' from data source \n  `/home/vincent/github/pointe-aux-loups/data/bathymetrie10.geojson' \n  using driver `GeoJSON'\nSimple feature collection with 1 feature and 1 field\nGeometry type: LINESTRING\nDimension:     XY\nBounding box:  xmin: -61.69995 ymin: 47.54726 xmax: -61.65056 ymax: 47.57694\nGeodetic CRS:  WGS 84\n\n\nReading layer `zones' from data source \n  `/home/vincent/github/pointe-aux-loups/data/zones.geojson' \n  using driver `GeoJSON'\nSimple feature collection with 6 features and 1 field\nGeometry type: POLYGON\nDimension:     XY\nBounding box:  xmin: 290001.8 ymin: 5266854 xmax: 293951.9 ymax: 5270559\nProjected CRS: NAD83(CSRS) / MTM zone 4"
+  },
+  {
     "objectID": "tablet_manual.html",
     "href": "tablet_manual.html",
     "title": "Guide d’utilisation de la tablette",

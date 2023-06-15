@@ -1,1 +1,1 @@
-Sitemap: https://BiomeBenthos.github.io/pointe-aux-outardes/sitemap.xml
+Sitemap: https://BiomeBenthos.github.io/pointe-aux-loups/sitemap.xml
