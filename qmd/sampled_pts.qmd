@@ -7,23 +7,23 @@ page-layout: full
 ```{r}
 #| echo: false
 #| column: screen
-#| fig.height: 10
+#| fig.height: 15
 #| warning: FALSE
 #| message: FALSE
 
 library(mapview)
 
 # Site recharge
-construction <- sf::st_read("../data/lignes_construction/6301-23-0104_20230504_ZoneTransfertAdministrationF0110.shp") |> suppressMessages()
+construction <- invisible(sf::st_read("../data/lignes_construction/6301-23-0104_20230504_ZoneTransfertAdministrationF0110.shp"))
 construction[,"nom"] <- "Recharge"
 
 # Bathymetry
-bathy0 <- sf::st_read("../data/bathymetrie.geojson") |> suppressMessages()
-bathy10 <- sf::st_read("../data/bathymetrie10.geojson") |> suppressMessages()
+bathy0 <- invisible(sf::st_read("../data/bathymetrie.geojson"))
+bathy10 <- invisible(sf::st_read("../data/bathymetrie10.geojson"))
 bathy10[1,"depth"] <- "-10m"
 
 # Sites
-sites <- sf::st_read("../data/zones.geojson") |> suppressMessages()
+sites <- invisible(sf::st_read("../data/zones.geojson"))
 
 # Sampling points
 sampling_pts <- read.csv("../data/sample_pts_2023.csv")
@@ -47,7 +47,7 @@ sampling_pts_all[,"done"] <- 0
 #sampling_pts_done <- sampling_pts_all[sampling_pts_all$name %in% pts_done$eventid,]
 
 # Import stations
-stations <- terra::vect("../data/soussites.geojson") |> suppressMessages()
+stations <- terra::vect("../data/soussites.geojson")
 stations$noms_sous_sites <- tolower(stations$noms_sous_sites)
 
 stations_not_started <- stations$noms_sous_sites
