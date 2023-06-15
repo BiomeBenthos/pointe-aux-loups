@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "site6line",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "_leaflet_id": 1963, "feature_type": "polyline" }, "geometry": { "type": "LineString", "coordinates": [ [ -61.651325, 47.562339 ], [ -61.64418, 47.567058 ] ] } }
+]
+}

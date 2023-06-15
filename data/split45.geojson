@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "split45",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::2946" } },
+"features": [
+{ "type": "Feature", "properties": { "X_leaflet_id": 1440, "feature_type": "polyline" }, "geometry": { "type": "LineString", "coordinates": [ [ 292085.234784636006225, 5269633.983093900606036 ], [ 292918.104073253809474, 5268674.120190057903528 ] ] } }
+]
+}
