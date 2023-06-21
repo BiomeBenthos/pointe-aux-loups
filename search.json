@@ -1,5 +1,12 @@
 [
   {
+    "objectID": "sampled_pts.html",
+    "href": "sampled_pts.html",
+    "title": "Points échantillonnés",
+    "section": "",
+    "text": "Reading layer `soussites' from data source \n  `/home/vincent/github/pointe-aux-loups/data/soussites.geojson' \n  using driver `GeoJSON'\nSimple feature collection with 54 features and 2 fields\nGeometry type: POLYGON\nDimension:     XY\nBounding box:  xmin: 290001.8 ymin: 5266854 xmax: 293951.9 ymax: 5270559\nProjected CRS: NAD83(CSRS) / MTM zone 4\n\n\nLoading basemap 'world_imagery' from map service 'esri'..."
+  },
+  {
     "objectID": "tablet_manual.html",
     "href": "tablet_manual.html",
     "title": "Guide d’utilisation de la tablette",
