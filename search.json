@@ -1,12 +1,5 @@
 [
   {
-    "objectID": "sampled_pts.html",
-    "href": "sampled_pts.html",
-    "title": "Points échantillonnés",
-    "section": "",
-    "text": "Reading layer `samples_2023' from data source \n  `/home/vincent/github/pointe-aux-loups/data/samples_2023.geojson' \n  using driver `GeoJSON'\nSimple feature collection with 540 features and 1 field\nGeometry type: POINT\nDimension:     XY\nBounding box:  xmin: -61.69649 ymin: 47.54115 xmax: -61.64498 ymax: 47.57311\nGeodetic CRS:  WGS 84"
-  },
-  {
     "objectID": "tablet_manual.html",
     "href": "tablet_manual.html",
     "title": "Guide d’utilisation de la tablette",
