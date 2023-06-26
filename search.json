@@ -1,12 +1,5 @@
 [
   {
-    "objectID": "sampled_pts.html",
-    "href": "sampled_pts.html",
-    "title": "Points échantillonnés",
-    "section": "",
-    "text": "Reading layer `tracks' from data source \n  `/home/vincent/github/pointe-aux-loups/qmd/Trace_Site 1-3.gpx' \n  using driver `GPX'\nSimple feature collection with 1 feature and 14 fields\nGeometry type: MULTILINESTRING\nDimension:     XY\nBounding box:  xmin: -61.68888 ymin: 47.54062 xmax: -61.67049 ymax: 47.55086\nGeodetic CRS:  WGS 84\n\n\nReading layer `tracks' from data source \n  `/home/vincent/github/pointe-aux-loups/qmd/Trace_Site 4-6.gpx' \n  using driver `GPX'\nSimple feature collection with 1 feature and 14 fields\nGeometry type: MULTILINESTRING\nDimension:     XY\nBounding box:  xmin: -61.6705 ymin: 47.55086 xmax: -61.64377 ymax: 47.56769\nGeodetic CRS:  WGS 84"
-  },
-  {
     "objectID": "tablet_manual.html",
     "href": "tablet_manual.html",
     "title": "Guide d’utilisation de la tablette",
